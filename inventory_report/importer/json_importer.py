@@ -4,7 +4,7 @@ import json
 
 class JsonImporter(Importer):
     @classmethod
-    def import_data(cls: str, path: str):
+    def import_data(cls, path):
         if path.endswith(".json"):
             with open(path) as file:
                 return json.load(file)

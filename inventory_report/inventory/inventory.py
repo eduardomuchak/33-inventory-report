@@ -7,9 +7,9 @@ import xmltodict
 
 class Inventory:
     @classmethod
-    def import_data(cls: str, path: str, type: str):
-        report: str = ""
-        product_info: list = []
+    def import_data(cls, path, type):
+        report = ""
+        product_info = []
         with open(path) as file:
             if path.endswith(".csv"):
                 product_info = [row for row in csv.DictReader(file)]

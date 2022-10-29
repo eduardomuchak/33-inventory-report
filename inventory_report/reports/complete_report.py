@@ -3,13 +3,11 @@ from inventory_report.reports.simple_report import SimpleReport
 
 class CompleteReport(SimpleReport):
     @classmethod
-    def generate(cls: str, products: list):
-        simple_report: str = super().generate(products)
-        products_per_company: str = cls.get_count_products_per_company(
-            products
-        )
+    def generate(cls, products):
+        simple_report = super().generate(products)
+        products_per_company = cls.get_count_products_per_company(products)
 
-        complete_report: str = ""
+        complete_report = ""
 
         for key, value in products_per_company.items():
             complete_report += f"- {key}: {value}\n"
@@ -21,10 +19,10 @@ class CompleteReport(SimpleReport):
         )
 
     @classmethod
-    def get_count_products_per_company(cls: str, products: list):
-        companies_products: dict = {}
+    def get_count_products_per_company(cls, products):
+        companies_products = {}
         for product in products:
-            company: str = product["nome_da_empresa"]
+            company = product["nome_da_empresa"]
             if company in companies_products:
                 companies_products[company] += 1
             else:

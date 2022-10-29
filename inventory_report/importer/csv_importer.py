@@ -1,4 +1,4 @@
-from inventory_report.importer.csv_importer import Importer
+from inventory_report.importer.importer import Importer
 import csv
 
 

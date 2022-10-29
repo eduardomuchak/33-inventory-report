@@ -1,0 +1,12 @@
+from inventory_report.importer.csv_importer import Importer
+import xmltodict
+
+
+class XmlImporter(Importer):
+    @classmethod
+    def import_data(cls: str, path: str):
+        if path.endswith(".xml"):
+            with open(path) as file:
+                return xmltodict.parse(file.read())["dataset"]["record"]
+        else:
+            raise ValueError("Arquivo inválido")

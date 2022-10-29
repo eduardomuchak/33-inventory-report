@@ -3,7 +3,7 @@ from datetime import datetime
 
 class SimpleReport:
     @classmethod
-    def generate(cls, products):
+    def generate(cls: str, products: list):
         oldest_manufactoring_date = cls.get_oldest_manufactoring_date(products)
         nearest_expiration_date = cls.get_nearest_expiration_date(products)
         company_with_more_products = cls.get_company_with_more_products(
@@ -17,7 +17,7 @@ class SimpleReport:
         )
 
     @classmethod
-    def get_oldest_manufactoring_date(cls, products):
+    def get_oldest_manufactoring_date(cls: str, products: list):
         oldest_manufactoring_date = datetime.now()
         for product in products:
             manufactoring_date = datetime.strptime(
@@ -29,7 +29,7 @@ class SimpleReport:
         return oldest_manufactoring_date.strftime("%Y-%m-%d")
 
     @classmethod
-    def get_nearest_expiration_date(cls, products):
+    def get_nearest_expiration_date(cls: str, products: list):
         return min(
             [
                 datetime.strptime(product["data_de_validade"], "%Y-%m-%d")
@@ -38,8 +38,8 @@ class SimpleReport:
         ).strftime("%Y-%m-%d")
 
     @classmethod
-    def get_company_with_more_products(cls, products):
-        companies = {}
+    def get_company_with_more_products(cls: str, products: list):
+        companies: dict = {}
         for product in products:
             company = product["nome_da_empresa"]
             if company in companies:
